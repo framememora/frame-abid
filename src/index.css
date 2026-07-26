@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+
+  --color-ink: #050505;
+  --color-gold: #e8c07d;
+  --color-gold-soft: #f2d9a8;
+  --color-gold-deep: #c79a52;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Entrance animation, staggered via inline animation-delay */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  opacity: 0;
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* The gold light streak drawing itself along the sculpture base */
+@keyframes draw-streak {
+  from {
+    stroke-dashoffset: 1400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.streak {
+  stroke-dasharray: 1400;
+  animation: draw-streak 2.6s cubic-bezier(0.33, 1, 0.68, 1) 0.4s forwards;
+}
+
+/* Slow breathing glow on the rim light */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .streak,
+  .breathe {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
