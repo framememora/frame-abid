@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100svh-96px)] items-center overflow-hidden"
+      className="relative z-10 flex min-h-[calc(115svh-96px)] items-center overflow-hidden bg-ink"
     >
       <HeroVisual />
 
